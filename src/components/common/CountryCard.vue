@@ -7,8 +7,8 @@ interface Props {
   name: string;
   continent: string;
   flag: string;
-  currency: Currencies;
-  language: Languages;
+  currency: Currencies | undefined;
+  language: Languages | undefined;
   population: number;
 }
 
@@ -18,33 +18,12 @@ interface Emits {
 
 const emits = defineEmits<Emits>();
 
-const continentColour = computed(() => {
-  switch (props.continent) {
-    case 'Antarctica':
-      return '#797979';
-    case 'South America':
-      return '#73B790';
-    case 'Oceania':
-      return '#7990C5';
-    case 'North America':
-      return '#F17F90';
-    case 'Europe':
-      return '#77C0D8';
-    case 'Asia':
-      return '#FFC273';
-    case 'Africa':
-      return '#FBCBB7';
-    default:
-      return '';
-  }
-});
-
 const currencyName = computed(() => {
   if (props.currency && Object.keys(props.currency).length > 0) {
     const key = Object.keys(props.currency)[0];
     return props.currency[key].name;
   }
-  return '--'; // Return an empty string or a default value if currency is not available
+  return '--';
 });
 
 const language = computed(() => {
@@ -68,47 +47,29 @@ const handleGoToCountryDetails = () => {
 
 <template>
   <div
-    class="rounded-lg border overflow-hidden drop-shadow cursor-pointer"
+    class="rounded-lg border border-gray overflow-hidden drop-shadow cursor-pointer"
     @click="handleGoToCountryDetails"
   >
-    <div :class="`bg-[${continentColour}]`" class="p-4">
-      <div class="flex items-center justify-between">
-        <p class="text-white text-[24px] font-bold">
-          {{ name }}
-        </p>
-      </div>
+    <div class="overflow-hidden border-b border-gray">
+      <img :src="flag" alt="" class="h-full w-full object-cover aspect-video" />
     </div>
-    <div class="grid grid-cols-2 p-4 gap-4 items-center">
-      <div class="overflow-hidden">
-        <img :src="flag" class="aspect-[3/2] object-contain" />
-      </div>
-      <div class="flex flex-col gap-2">
+    <div class="p-4 flex flex-col gap-2 bg-white h-full">
+      <p class="font-bold text-[1.5rem]">{{ name }}</p>
+      <div class="grid grid-cols-2 gap-2 text-[0.875rem]">
         <div class="flex items-center gap-1 w-fit">
-          <MaterialIcon
-            icon-name="language"
-            :style="{ color: continentColour }"
-          />
+          <MaterialIcon icon-name="language" class="text-gray" />
           <p class="leading-none">{{ language }}</p>
         </div>
         <div class="flex items-center gap-1 w-fit">
-          <MaterialIcon
-            icon-name="account_balance"
-            :style="{ color: continentColour }"
-          />
+          <MaterialIcon icon-name="account_balance" class="text-gray" />
           <p class="leading-none">{{ currencyName }}</p>
         </div>
         <div class="flex items-center gap-1 w-fit">
-          <MaterialIcon
-            icon-name="location_on"
-            :style="{ color: continentColour }"
-          />
+          <MaterialIcon icon-name="location_on" class="text-gray" />
           <p class="leading-none">{{ continent }}</p>
         </div>
         <div class="flex items-center gap-1 w-fit">
-          <MaterialIcon
-            icon-name="person"
-            :style="{ color: continentColour }"
-          />
+          <MaterialIcon icon-name="person" class="text-gray" />
           <p class="leading-none">{{ population }}</p>
         </div>
       </div>

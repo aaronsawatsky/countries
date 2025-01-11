@@ -1,7 +1,17 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router';
+import { onMounted } from 'vue';
+import { useCountryStore } from '@/stores/countries';
+
+const route = useRoute();
+const countryStore = useCountryStore();
+onMounted(async () => {
+  await countryStore.fetchCountries();
+});
 </script>
 
 <template>
-  <RouterView />
+  <component :is="route.meta.layout">
+    <RouterView />
+  </component>
 </template>

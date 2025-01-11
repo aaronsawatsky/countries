@@ -1,11 +1,19 @@
+import { ref } from 'vue';
+import type { Country } from '@/types';
+
 export function useCountries() {
+  const countries = ref<Country[]>([]);
+  const searchResults = ref<string[]>([]);
   const fetchCountries = async () => {
     try {
       const response = await fetch('https://restcountries.com/v3.1/all');
       if (!response.ok) {
         throw new Error(`Error fetching countries: ${response.statusText}`);
       } else {
-        return await response.json();
+        countries.value = await response.json();
+        searchResults.value = countries.value.map(
+          (country) => country.name.common,
+        );
       }
     } catch (e) {
       console.log(e);
@@ -30,5 +38,7 @@ export function useCountries() {
   return {
     fetchCountries,
     fetchCountryDetails,
+    countries,
+    searchResults,
   };
 }
