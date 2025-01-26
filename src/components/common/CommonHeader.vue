@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, computed, watchEffect } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import CommonSearch from './CommonSearch.vue';
 import { useCountryStore } from '@/stores/countries';
 
@@ -22,8 +22,6 @@ const filteredSearchResults = computed(() =>
   ),
 );
 
-watchEffect(() => console.log(countryStore.searchResults));
-
 onMounted(async () => {
   setHeaderHeight();
 });
@@ -32,8 +30,18 @@ onMounted(async () => {
 <template>
   <div
     ref="header"
-    class="w-full border-b border-gray p-4 bg-navy fixed top-0 z-10"
+    class="w-full top-0 z-10 flex gap-4 justify-between items-center border-b border-border-base p-2 px-4"
   >
-    <CommonSearch v-model="searchTerm" :results="filteredSearchResults" />
+    <span class="font-bold">Explorer</span>
+    <div
+      class="grid lg:grid-cols-[20rem_auto] grid-cols-[min-content_1fr] gap-4"
+    >
+      <CommonSearch v-model="searchTerm" :results="filteredSearchResults" />
+      <button
+        class="bg-[#f3efe7] text-[#1b160e] text-sm leading-none rounded-full px-4 font-bold"
+      >
+        <span class="truncate">Log in</span>
+      </button>
+    </div>
   </div>
 </template>
