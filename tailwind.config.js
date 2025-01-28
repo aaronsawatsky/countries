@@ -17,7 +17,7 @@ export default {
         gray: '#A0A0A0',
         background: '#EEE8DD',
         navy: '#071C2E',
-        'border-base': '#f3efe7',
+        'border-base': '#D5D5D5',
         accent: '#977e4e',
         'accent-bg': '#f3efe7',
         'text-base': '#1b160e',

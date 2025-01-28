@@ -30,7 +30,7 @@ onMounted(async () => {
 <template>
   <div
     ref="header"
-    class="w-full top-0 z-10 flex gap-4 justify-between items-center border-b border-border-base p-2 px-4"
+    class="w-full fixed bg-white top-0 z-10 flex gap-4 justify-between items-center border-b border-border-base p-2 px-4"
   >
     <span class="font-bold">Explorer</span>
     <div
