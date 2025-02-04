@@ -50,7 +50,7 @@ onMounted(async () => {
           <p class="font-bold text-3xl leading-none">
             {{ country.name.common }}
           </p>
-          <div class="flex flex-col gap-2 mt-4 text-2xl">
+          <div class="flex flex-col gap-2 mt-4">
             <div class="flex items-center gap-2">
               <MaterialIcon icon-name="things_to_do" class="text-accent" />
               <p class="text-accent">

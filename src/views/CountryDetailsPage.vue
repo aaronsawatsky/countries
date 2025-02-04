@@ -18,4 +18,8 @@ onMounted(async () => {
 });
 </script>
 
-<template>{{ countryName }}</template>
+<template>
+  <div>
+    
+  </div>
+</template>
