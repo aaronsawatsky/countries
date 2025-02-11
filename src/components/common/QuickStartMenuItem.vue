@@ -16,7 +16,7 @@ defineProps<Props>();
     class="w-full flex items-center gap-2 px-4 py-2 hover:bg-rurikon-50 transition rounded-lg cursor-pointer"
   >
     <div
-      class="rounded-lg bg-accent-bg flex items-center justify-center w-fit flex-shrink-0 p-2"
+      class="rounded-lg flex items-center justify-center w-fit flex-shrink-0 p-2"
     >
       <MaterialIcon :iconName="icon" />
     </div>

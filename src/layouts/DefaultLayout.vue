@@ -21,7 +21,7 @@ const handleToggleSearch = () => {
     <div class="border-b border-rurikon-border lg:border-b-0 lg:border-r">
       <CommonHeaderV2 @handle-toggle-search="handleToggleSearch" />
     </div>
-    <div class="pt-4 lg:pt-0 lg:pl-10 mx-auto">
+    <div class="pt-4 lg:pt-0 lg:pl-10 mx-auto w-full">
       <RouterView />
     </div>
   </div>

@@ -29,7 +29,7 @@ const handleToggleSearch = () => {
         class="italic text-rurikon-300 transition hover:text-rurikon-800"
         :class="{ 'text-rurikon-800': route.name === 'countries' }"
       >
-        <router-link to="/">Countries</router-link>
+        <router-link to="/all-countries">Countries</router-link>
       </li>
       <li
         class="italic text-rurikon-300 transition hover:text-rurikon-800 cursor-pointer"
