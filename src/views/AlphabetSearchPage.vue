@@ -30,15 +30,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="p-4 lg:p-10">
-    <p class="font-bold text-4xl mb-10">
+  <div class="text-rurikon-600">
+    <p class="font-semibold mb-6">
       Countries Starting with '{{ searchedLetter }}'
     </p>
-    <div class="grid lg:grid-cols-2 gap-6 items-start">
+    <div
+      class="grid grid-cols-1 md:divide-none divide-y divide-rurikon-base md:grid-cols-2 gap-6 items-start"
+    >
       <div
         v-for="(country, index) in getCountryByLetter"
         :key="index"
-        class="p-4 grid grid-cols-2 gap-6 hover:cursor-pointer hover:bg-gray/10 transition rounded"
+        class="p-4 grid grid-cols-2 gap-6 hover:cursor-pointer lg:rounded-lg lg:hover:bg-rurikon-50 transition"
         @click="handleGoToDetails(country.name.common)"
       >
         <img
@@ -47,7 +49,7 @@ onMounted(async () => {
           class="h-full w-full object-contain"
         />
         <div class="flex flex-col gap-2">
-          <p class="font-bold text-3xl leading-none">
+          <p class="font-bold leading-none">
             {{ country.name.common }}
           </p>
           <div class="flex flex-col gap-2 mt-4">
@@ -66,7 +68,7 @@ onMounted(async () => {
               </p>
             </div>
             <div class="flex items-start gap-2">
-              <MaterialIcon icon-name="language" class="text-accent mt-1" />
+              <MaterialIcon icon-name="language" class="text-accent" />
               <p class="text-accent">
                 {{ Object.values(country.languages).join(', ') }}
               </p>

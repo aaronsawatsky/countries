@@ -32,8 +32,40 @@ const getFeaturedCountries = computed(() => {
 </script>
 
 <template>
-  <div class="max-w-[60rem] mx-auto p-10">
-    <div class="flex flex-col gap-10">
+  <div class="font-sans text-rurikon-600 flex flex-col gap-6">
+    <div class="flex flex-col gap-2">
+      <p class="font-semibold">Featured Countries</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <CountryCard
+          v-for="(country, index) in getFeaturedCountries"
+          :key="index"
+          :name="country.name.common"
+          :flag="country.flags.png"
+          :capitals="country.capital ?? []"
+          @click:goToCountry="handleGoToCountry"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col gap-2">
+      <p class="font-semibold">Featured Quizzes</p>
+      <div class="flex flex-col gap-4">
+        <QuickStartMenuItem
+          icon="language"
+          title="World capitals"
+          subText="Test your knowledge of world capitals"
+        />
+        <QuickStartMenuItem
+          icon="flag"
+          title="Country flags"
+          subText="Test your knowledge of flags"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col gap-2">
+      <p class="font-semibold">Search Country by Letter</p>
+      <AlphabetSearch />
+    </div>
+    <!-- <div class="flex flex-col gap-10">
       <div class="grid lg:grid-cols-2 gap-6">
         <div class="rounded-xl overflow-hidden">
           <img
@@ -87,6 +119,6 @@ const getFeaturedCountries = computed(() => {
         <p class="font-bold text-[1.5rem]">Search by letter</p>
         <AlphabetSearch />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>

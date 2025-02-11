@@ -19,10 +19,10 @@ const handleGoToAlphabetSearch = (letter: string) => {
       v-for="(letter, index) in alphabet"
       :key="index"
       type="button"
-      class="rounded-lg size-12 flex items-center justify-center hover:shadow-md transition"
+      class="rounded-lg size-12 flex items-center justify-center hover:bg-rurikon-50 transition"
       @click="handleGoToAlphabetSearch(letter)"
     >
-      <p class="text-accent underline text-[1.25rem] underline-offset-2">
+      <p class="underline underline-offset-2">
         {{ letter }}
       </p>
     </button>
