@@ -5,6 +5,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import SearchResultsPage from '@/views/SearchResultsPage.vue';
 import AlphabetSearchPage from '@/views/AlphabetSearchPage.vue';
 import AllCountries from '@/views/AllCountries.vue';
+import AboutPage from '@/views/AboutPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,6 +46,14 @@ const router = createRouter({
       path: '/all-countries',
       name: 'countries',
       component: AllCountries,
+      meta: {
+        layout: DefaultLayout,
+      },
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: AboutPage,
       meta: {
         layout: DefaultLayout,
       },

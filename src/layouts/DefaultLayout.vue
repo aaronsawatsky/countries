@@ -17,20 +17,10 @@ const handleToggleSearch = () => {
     v-model="searchValue"
     @click:close="handleToggleSearch"
   />
-  <div class="p-4 lg:p-10 flex flex-col lg:flex-row min-h-screen">
-    <div class="border-b border-rurikon-border lg:border-b-0 lg:border-r">
-      <CommonHeaderV2 @handle-toggle-search="handleToggleSearch" />
-    </div>
-    <div class="pt-4 lg:pt-0 lg:pl-10 mx-auto w-full">
-      <RouterView />
-    </div>
+  <CommonHeaderV2 @handle-toggle-search="handleToggleSearch" />
+  <div
+    class="pt-[calc(var(--headerHeight)+1rem)] px-4 lg:py-10 lg:px-0 lg:pl-[calc(var(--headerWidth)+2.5rem)] lg:pr-10"
+  >
+    <RouterView />
   </div>
-  <!-- <CommonHeader />
-  <div class="bg-background lg:p-10 p-4 mx-auto min-h-screen">
-    <div
-      class="bg-white max-w-[80rem] mx-auto rounded-xl drop-shadow-xl mt-[var(--header-height)]"
-    >
-      <RouterView />
-    </div>
-  </div> -->
 </template>
