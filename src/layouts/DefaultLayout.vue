@@ -21,6 +21,20 @@ const handleToggleSearch = () => {
   <div
     class="pt-[calc(var(--headerHeight)+1rem)] px-4 lg:py-10 lg:px-0 lg:pl-[calc(var(--headerWidth)+2.5rem)] lg:pr-10"
   >
-    <RouterView />
+    <transition name="fade" mode="out-in">
+      <RouterView :key="$route.fullPath" />
+    </transition>
   </div>
 </template>
+
+<style>
+/* Fade animation */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
