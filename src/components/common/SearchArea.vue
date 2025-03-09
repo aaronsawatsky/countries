@@ -81,7 +81,7 @@ onMounted(() => {
         </button> -->
         <div
           v-if="isShowSearchResults"
-          class="absolute top-16 bg-white w-full flex flex-col max-h-[35.5rem] rounded-lg divide-y divide-rurikon-border overflow-scroll shadow-xl"
+          class="absolute top-16 bg-white w-full flex flex-col max-h-[35.5rem] rounded-lg divide-y divide-border-rurikon overflow-scroll shadow-xl"
         >
           <router-link
             v-for="country in searchResults"

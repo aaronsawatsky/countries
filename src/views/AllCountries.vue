@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useCountries } from '@/composables/useCountries';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watchEffect } from 'vue';
 import type { Country } from '@/types';
+import CountryPreviewCard from '@/components/common/CountryPreviewCard.vue';
 
 const { countries, fetchCountries } = useCountries();
 
@@ -22,6 +23,10 @@ const sortedCountries = computed(() => {
   return grouped;
 });
 
+watchEffect(() => {
+  console.log(sortedCountries.value);
+});
+
 onMounted(() => {
   fetchCountries();
 });
@@ -33,18 +38,17 @@ onMounted(() => {
       v-for="(letter, letterIndex) in Object.keys(sortedCountries).sort()"
       :key="letterIndex"
       :id="letter"
-      class="divide-y divide-rurikon-border"
+      class="divide-y divide-border-rurikon"
     >
       <p class="font-semibold text-rurikon-600 text-4xl pb-4">{{ letter }}</p>
       <div class="flex flex-col gap-4 pt-4">
-        <router-link
-          :to="`/details/${country.name.common}`"
+        <CountryPreviewCard
           v-for="(country, countryIndex) in sortedCountries[letter]"
           :key="countryIndex"
-          class="underline text-rurikon-300 hover:text-rurikon-800 transition w-fit"
-        >
-          {{ country.name.common }}
-        </router-link>
+          :name="country.name.common"
+          :flag="country.flags.png"
+          :capitals="country.capital || []"
+        />
       </div>
     </div>
   </div>

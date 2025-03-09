@@ -70,7 +70,11 @@ onMounted(async () => {
             <div class="flex items-start gap-2">
               <MaterialIcon icon-name="language" class="text-accent" />
               <p class="text-accent">
-                {{ Object.values(country.languages).join(', ') }}
+                {{
+                  country.languages
+                    ? Object.values(country.languages).join(', ')
+                    : 'Unknown'
+                }}
               </p>
             </div>
           </div>
