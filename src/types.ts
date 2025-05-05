@@ -65,3 +65,21 @@ export interface Country {
     latlng: [number, number];
   };
 }
+
+export interface Quiz {
+  title: string;
+  quiz_id: string;
+  thumbnail: string;
+  description: string;
+  number_of_questions: number;
+  tags: string[];
+  difficulty_level: number;
+  average_rating: number;
+  date_created: Date | string;
+  view_count: number;
+  author: string;
+  is_published: boolean;
+  time_to_complete: number;
+  category: string;
+  language: string;
+}

@@ -19,5 +19,19 @@
   html {
     font-family: 'Georgia';
     color: #1b160e;
+
+    font-size: calc(100vw / 393 * 16);
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: calc(100vw / 768 * 16);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: calc(100vw / 1440 * 16);
+    }
   }
 }

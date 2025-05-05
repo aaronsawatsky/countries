@@ -8,7 +8,7 @@ defineProps<Props>();
 </script>
 
 <template>
-  <span class="material-symbols-rounded" :class="classes">
+  <span class="material-symbols-rounded !leading-none" :class="classes">
     {{ iconName }}
   </span>
 </template>

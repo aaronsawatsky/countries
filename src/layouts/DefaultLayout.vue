@@ -30,7 +30,6 @@ const handleToggleSearch = () => {
 </template>
 
 <style>
-/* Fade animation */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease-in-out;

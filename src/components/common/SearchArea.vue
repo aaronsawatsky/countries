@@ -17,7 +17,7 @@ defineProps<Props>();
 
 const { fetchCountries, searchResults } = useCountries();
 
-const searchValue = defineModel<string>('');
+const searchValue = defineModel<string>();
 
 const isShowSearchResults = ref<boolean>(false);
 

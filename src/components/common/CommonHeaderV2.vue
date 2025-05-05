@@ -32,7 +32,7 @@ onUnmounted(() => {
 <template>
   <nav
     ref="headerRef"
-    class="fixed bg-white w-full lg:w-fit lg:min-h-screen flex px-4 lg:px-0"
+    class="fixed bg-white w-full lg:w-fit lg:min-h-screen flex px-4 lg:px-0 z-10"
   >
     <div
       class="flex w-full border-b border-border-rurikon lg:border-b-0 lg:border-r lg:w-fit py-4 lg:py-0 lg:my-10 lg:px-10"
@@ -48,7 +48,7 @@ onUnmounted(() => {
           class="italic text-rurikon-300 transition hover:text-rurikon-800"
           :class="{ 'text-rurikon-800': route.name === 'quizzes' }"
         >
-          <router-link to="/">Quizzes</router-link>
+          <router-link to="/quizzes">Quizzes</router-link>
         </li>
         <li
           class="italic text-rurikon-300 transition hover:text-rurikon-800"
