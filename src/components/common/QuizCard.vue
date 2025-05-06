@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { Quiz } from '@/types';
 import ChipTag from './ChipTag.vue';
+import MaterialIcon from './MaterialIcon.vue';
 
 interface Props {
   quizData: Quiz;
+  filteredTags?: string[];
 }
 
 interface Emits {
@@ -11,7 +13,11 @@ interface Emits {
   (e: 'click:removeTagFilter', val: string): void;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const handleCheckRelatedTag = (tag: string) => {
+  return props.filteredTags?.includes(tag);
+};
 
 const emits = defineEmits<Emits>();
 
@@ -21,32 +27,37 @@ const handleAddTagFilter = (tag: string) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-1 leading-none">
-    <div class="size-full rounded overflow-hidden relative">
+  <div class="flex flex-col gap-2 leading-none">
+    <div class="size-full rounded overflow-hidden relative cursor-pointer">
       <img :src="quizData.thumbnail" alt="" class="size-full" />
-      <div
-        class="absolute bottom-0 left-0 w-full bg-black/80 p-2 text-white text-xs leading-none flex items-center justify-between"
-      >
-        <span class="text-xs leading-none">{{ quizData.category }}</span>
-        <div class="flex items-center gap-1">
-          <span>{{ quizData.view_count }} views</span>
-          <span>・</span>
-          <div class="flex items-center gap-1">
-            <span>{{ quizData.number_of_questions }} questions</span>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="flex flex-col gap-2">
-      <p class="font-semibold text-rurikon-600">{{ quizData.title }}</p>
-      <p class="line-clamp-1 text-sm">
+      <p
+        class="font-semibold text-rurikon-600 hover:underline cursor-pointer w-fit"
+      >
+        {{ quizData.title }}
+      </p>
+      <p class="line-clamp-2 text-sm text-rurikon-500">
         {{ quizData.description }}
       </p>
+      <div class="text-xs flex items-center gap-1 text-rurikon-500">
+        <span>{{ quizData.view_count }} views</span>
+        <span>・</span>
+        <div class="flex items-center gap-1">
+          <span>{{ quizData.number_of_questions }} questions</span>
+        </div>
+        <span>・</span>
+        <div class="flex items-center gap-1">
+          <MaterialIcon icon-name="star" :is-fill="true" class="!text-sm" />
+          <span>{{ quizData.average_rating }}</span>
+        </div>
+      </div>
       <div class="flex items-center gap-1">
         <ChipTag
           v-for="(tag, index) in quizData.tags"
           :key="index"
           :text="tag"
+          :is-related="handleCheckRelatedTag(tag)"
           @click="handleAddTagFilter(tag)"
         />
       </div>

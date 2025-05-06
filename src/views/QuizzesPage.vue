@@ -47,6 +47,7 @@ const filteredQuizData = computed(() => {
         v-for="quiz in filteredQuizData"
         :key="quiz.quiz_id"
         :quizData="quiz"
+        :filtered-tags="tagFilters"
         @click:add-tag-filter="handleAddTagFilter"
       />
     </div>

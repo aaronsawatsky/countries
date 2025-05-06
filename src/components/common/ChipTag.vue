@@ -5,6 +5,7 @@ import { computed } from 'vue';
 interface Props {
   text: string;
   isSelected?: boolean;
+  isRelated?: boolean;
 }
 
 interface Emits {
@@ -25,10 +26,14 @@ const capitalizedText = computed(() =>
 <template>
   <div
     class="rounded-full bg-rurikon-100 px-2 py-1 w-fit cursor-pointer hover:bg-rurikon-200 flex items-center gap-1"
-    :class="{ 'hover:bg-rurikon-800 group': isSelected }"
+    :class="{
+      'hover:bg-rurikon-800 group': isSelected,
+      'bg-rurikon-800 pointer-events-none': isRelated,
+    }"
   >
     <span
       class="text-xs group-hover:text-white text-rurikon-600 line-clamp-1"
+      :class="{ 'text-white': isRelated }"
       >{{ capitalizedText }}</span
     >
     <button
